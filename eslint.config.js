@@ -9,4 +9,5 @@ export default antfu({
     semi: true,
     quotes: "double",
   },
+  ignores: ["./src/routeTree.gen.ts"],
 });

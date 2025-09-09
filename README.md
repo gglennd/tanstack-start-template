@@ -1,1 +1,1 @@
-# vite-react-ts
+# vite-tanstack-react-router
