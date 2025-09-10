@@ -1,5 +1,6 @@
 import { createRootRoute, HeadContent, Outlet, Scripts } from "@tanstack/react-router";
 import * as React from "react";
+import appCss from "../styles/global.css?url";
 
 export const Route = createRootRoute({
   head: () => ({
@@ -15,6 +16,7 @@ export const Route = createRootRoute({
         title: "TanStack Start Starter",
       },
     ],
+    links: [{ rel: "stylesheet", href: appCss }],
   }),
   component: RootComponent,
 });
