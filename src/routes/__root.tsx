@@ -1,6 +1,7 @@
 import { createRootRoute, HeadContent, Outlet, Scripts } from "@tanstack/react-router";
 import * as React from "react";
 import appCss from "../styles/global.css?url";
+import { HeaderNav } from "./-components/header-navigation";
 
 export const Route = createRootRoute({
   head: () => ({
@@ -24,6 +25,7 @@ export const Route = createRootRoute({
 function RootComponent() {
   return (
     <RootDocument>
+      <HeaderNav />
       <Outlet />
     </RootDocument>
   );
