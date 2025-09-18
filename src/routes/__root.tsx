@@ -1,7 +1,10 @@
-import { createRootRoute, HeadContent, Outlet, Scripts } from "@tanstack/react-router";
-import * as React from "react";
-import appCss from "../styles/global.css?url";
-import { HeaderNav } from "./-components/header-navigation";
+import { createRootRoute, HeadContent, Scripts } from "@tanstack/react-router";
+
+import { DefaultCatchBoundary } from "@/components/default-catch-boundary";
+
+import { NotFound } from "@/components/not-found";
+import { HeaderNav } from "@/routes/-components/header-navigation";
+import appCss from "@/styles/global.css?url";
 
 export const Route = createRootRoute({
   head: () => ({
@@ -19,25 +22,19 @@ export const Route = createRootRoute({
     ],
     links: [{ rel: "stylesheet", href: appCss }],
   }),
-  component: RootComponent,
+  notFoundComponent: () => <NotFound />,
+  errorComponent: DefaultCatchBoundary,
+  shellComponent: RootShell,
 });
 
-function RootComponent() {
-  return (
-    <RootDocument>
-      <HeaderNav />
-      <Outlet />
-    </RootDocument>
-  );
-}
-
-function RootDocument({ children }: Readonly<{ children: React.ReactNode }>) {
+function RootShell({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html>
       <head>
         <HeadContent />
       </head>
       <body>
+        <HeaderNav />
         {children}
         <Scripts />
       </body>
